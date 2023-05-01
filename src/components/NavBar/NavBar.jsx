@@ -1,27 +1,40 @@
 import CartWidget from "../CartWidget/CartWidget"
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
+import Navbar from 'react-bootstrap/Navbar'
+import { NavLink, Link } from "react-router-dom";
+import './NavBar.css'
 
 
 const NavBar = () => {
   return (
-    <Navbar bg="light" expand="lg">
+    <div>
+    <Navbar bg="light" expand="lg" className="NavBar">
       <Container>
-        <Navbar.Brand href="#home">ReactStore</Navbar.Brand>
+      <Link to='/' className="links">
+        <h3>ReactStore !</h3>
+      </Link>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link href="#zapatillas">Zapatillas</Nav.Link>
-            <Nav.Link href="#gorros">Gorros</Nav.Link>
-            <Nav.Link href="#lentes">Lentes</Nav.Link>
-            <Nav.Link href="#pulseras">Pulseras</Nav.Link>
+          <Nav className="me-auto links">
+            <ul className="menu">
+              <li>
+                <NavLink to={`/category/zapatillas`} className={({ isActive}) => isActive ? 'ActiveOption' : 'Option'}>Zapatillas</NavLink>
+              </li>
+              <li>
+                <NavLink to={`/category/lentes`} className={({ isActive}) => isActive ? 'ActiveOption' : 'Option'}>Lentes</NavLink>
+              </li>
+              <li>
+                <NavLink to={`/category/gorras`} className={({ isActive}) => isActive ? 'ActiveOption' : 'Option'}>Gorras</NavLink>
+              </li>
+            </ul>
           </Nav>
+          <CartWidget />
         </Navbar.Collapse>
-        <CartWidget />
       </Container>
     </Navbar>
-  );
+    </div>
+  )
 }
 
 export default NavBar;
