@@ -13,15 +13,15 @@ const Item = ({id,name,img,price,stock})=>{
                 <img src={img} alt={name} className='ItemImg' />
             </picture>
             <section>
-                <p className='Info'>
-                    Precio: ${price} CLP
-                </p>
-                <p className='Info'>
+                <h3>
+                    Precio: ${price} USD
+                </h3>
+                <p>
                     Stock disponible: {stock}
                 </p>
             </section>
             <footer className='ItemFooter'>
-                <Link to={`/item/${id}`} className='OptionDetail'>Ver detalle</Link>
+                <Link to={`/item/${id}`} className='Button'>Comprar</Link>
             </footer>
         </article>
     )

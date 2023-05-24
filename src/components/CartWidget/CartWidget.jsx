@@ -1,11 +1,23 @@
+import './CartWidget.css'
 import cart from './assets/carrito.svg'
+import { useContext } from 'react'
+import { CartContext } from '../../context/CartContext'
+import { Link } from 'react-router-dom'
+
 
 const CartWidget = () => {
+    const { getQuantity } = useContext (CartContext)
+    const quantity = getQuantity ()
+
     return(
-        <div>
-            <img src={cart} alt="cart-widget" className='carrito' />
-            0  {/* Este es un numero fijo que representa la cantidad de elementos dentro del carrtio. En este caso es 0 */}
-        </div>
+            <Link to='/cart' className='CartWidget' >
+                <div className='cartW'>
+                    <img src={cart} alt="cart-widget" className='carrito' />
+                    <h3 className='numberProducts'>{quantity} </h3>
+                </div>
+            </Link>
+
+
     )
 }
 
